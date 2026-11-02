@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Outline&family=Atkinson+Hyperlegible+Next:wght@400;600&display=swap">
-<script>try{var t=localStorage.getItem('kbh-rua-tema');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<script>(function(){var d=document.documentElement;try{var t=localStorage.getItem('kbh-rua-tema');if(t==='light')d.setAttribute('data-theme','light')}catch(e){}if(/[?&]og\b/.test(location.search)){d.classList.add('og');return}if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&d.getAttribute('data-theme')!=='light')d.classList.add('boot')})()</script>
 <style>
 :root{
   --ceu1:#0E1430;--ceu2:#2A2752;--bg:#0E1430;--chao:#171A2E;--calc:#2C3050;
@@ -147,6 +147,28 @@ section{padding-block:clamp(4.5rem,3rem + 6vw,8.5rem)}
   .fac{--w:190px!important;scroll-snap-align:center}
 }
 
+/* a rua acende ao abrir */
+.boot #rua-scroll .fac:not(.sua):not(.on) .placa{box-shadow:inset 0 0 0 2px rgba(255,255,255,.07)}
+.boot #rua-scroll .fac:not(.sua):not(.on) .neon{font-family:'Bungee Outline',var(--sign);color:rgba(243,238,227,.4);text-shadow:none}
+.boot #rua-scroll .fac:not(.sua):not(.on) .vit{background:var(--vit-off);box-shadow:inset 0 0 0 4px rgba(0,0,0,.28)}
+.boot #rua-scroll .fac:not(.sua):not(.on) .jan i{background:var(--jan-off)}
+.boot .hero .poste:not(.on)::after{opacity:0}
+#rua-scroll .fac.on .neon{animation:liga 760ms steps(1) both}
+#rua-scroll .fac.on .vit{animation:vitrine 500ms ease both}
+@keyframes vitrine{0%{filter:brightness(.4)}40%{filter:brightness(1.1)}55%{filter:brightness(.6)}100%{filter:none}}
+.fac.sua.chama .placa{animation:chama 1.6s ease 2}
+@keyframes chama{0%,100%{box-shadow:inset 0 0 0 2px rgba(255,255,255,.07)}50%{box-shadow:inset 0 0 0 2px rgba(95,240,220,.75),0 0 22px rgba(95,240,220,.35)}}
+
+/* imagem de prévia (abre com ?og) */
+.og body{overflow:hidden}
+.og .top,.og .hero-t>div,.og .seta-sua,.og main>section:not(.hero),.og footer,.og .barra,.og .astro{display:none!important}
+.og main>section.fim{display:none!important}
+.og .hero{padding-top:44px}
+.og .hero-t{grid-template-columns:1fr;padding-left:24px}
+.og .hero h1{font-size:62px;max-width:15ch}
+.og .rua-wrap{margin-top:18px}
+.og .fac{--h:250px!important}
+
 /* procura */
 .procura{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(2rem,6vw,6rem);align-items:center}
 .busca{background:var(--card);border-radius:20px;padding:1.1rem;box-shadow:inset 0 0 0 1px var(--line)}
@@ -209,11 +231,21 @@ section{padding-block:clamp(4.5rem,3rem + 6vw,8.5rem)}
 .lt-txt p{color:var(--soft);margin-top:.4rem;max-width:44ch}
 .lt-txt a{display:inline-flex;margin-top:.8rem;font-weight:600;color:var(--kbh);text-underline-offset:4px;min-height:44px;align-items:center}
 .dica{color:var(--soft);font-size:.95rem;margin-top:.5rem}
+.dica-m{display:none}
 @media (max-width:860px){
-  .trilho{flex-direction:column;align-items:center;gap:3rem;padding:2rem 16px}
-  .loja{width:min(520px,100%)}
-  .vidro{grid-template-columns:1fr}
+  .trilho-wrap{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .trilho-wrap::-webkit-scrollbar{display:none}
+  .trilho{width:max-content;gap:14px;padding:1.75rem 16px 1.5rem}
+  .loja{width:84vw;max-width:420px;scroll-snap-align:center}
+  .loja .neon{font-size:21px}
+  .vidro{grid-template-columns:1fr;min-height:0}
+  .dica-m{display:flex;align-items:center;gap:.5rem;color:var(--soft);font-size:.95rem;font-weight:600;margin-top:.75rem}
+  .dica-m svg{width:20px;height:20px}
+  .pontos{display:flex;justify-content:center;gap:7px;padding-bottom:.5rem}
+  .pontos i{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background-color 200ms ease,transform 200ms ease}
+  .pontos i.on{background:var(--kbh);transform:scale(1.25)}
 }
+@media (min-width:861px){.pontos{display:none}}
 
 /* como acender */
 .seg{display:inline-flex;padding:4px;border-radius:14px;background:rgba(255,255,255,.06);gap:4px;box-shadow:inset 0 0 0 1px var(--line);margin-top:1.75rem}
@@ -263,15 +295,19 @@ section{padding-block:clamp(4.5rem,3rem + 6vw,8.5rem)}
 @media (max-width:900px){.planos{grid-template-columns:1fr;max-width:520px}}
 
 /* cases */
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(2rem,5vw,4rem);margin-top:3rem}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.5rem,4vw,3rem);margin-top:3rem}
+.cases .loja{width:auto}
+.v-case{grid-template-columns:1fr;place-items:center;padding:26px 18px 0;min-height:0;overflow:hidden;align-items:end}
+.v-case .cel{width:210px;aspect-ratio:300/430;border-radius:32px 32px 0 0;padding:8px 8px 0}
+.v-case .cel video{border-radius:24px 24px 0 0}
 .case{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center}
 .cel{position:relative;width:220px;aspect-ratio:300/610;border-radius:36px;background:#0A0C18;padding:9px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 30px 60px -30px rgba(0,0,0,.7),0 0 calc(70px*var(--glow)) -10px rgba(95,240,220,calc(.25*var(--glow)))}
 .cel::before{content:"";position:absolute;top:16px;left:50%;width:62px;height:17px;margin-left:-31px;border-radius:20px;background:#0A0C18;z-index:2}
 .cel video,.cel img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:28px;background:#222}
 .case p{color:var(--soft);margin-top:.5rem}
 .case a{display:inline-flex;margin-top:.9rem;font-weight:600;color:var(--kbh);min-height:44px;align-items:center;text-underline-offset:4px}
-@media (max-width:980px){.cases{grid-template-columns:1fr}}
-@media (max-width:520px){.case{grid-template-columns:1fr}.cel{margin-inline:auto}}
+@media (max-width:860px){.cases{grid-template-columns:1fr}.cases .loja{width:100%;max-width:none}}
+
 
 /* quem faz */
 .quem{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(2rem,6vw,6rem);align-items:start}
@@ -395,6 +431,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
   <div class="passeio-in wrap">
     <h2 id="rua-t">Dá uma volta na rua</h2>
     <p class="lead">Cada loja mostra uma coisa que a sua página pode fazer sozinha. Toque no nome pra entrar e ver a página de exemplo inteira.</p>
+    <p class="dica-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-5-5 5 5-5 5"/></svg>Deslize pro lado pra andar pela rua</p>
   </div>
       <div class="trilho" id="trilho">
 
@@ -447,7 +484,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
       </article>
 
     </div>
-  </div></div>
+  </div><div class="pontos" id="pontos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div></div>
 </section>
 
 <section id="como" aria-labelledby="como-t">
@@ -524,13 +561,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
     <h2 id="cases-t">Já acesas por aqui</h2>
     <p class="lead">Páginas de verdade, de gente da região, no ar agora.</p>
     <div class="cases">
-      <article class="case">
-        <div class="cel"><video muted loop playsinline preload="none" poster="casos/colina.jpg" data-src="casos/colina.mp4" aria-label="Vídeo da página do Apiário Colina da Mata"></video></div>
-        <div><h3>Apiário Colina da Mata</h3><p>Mel, própolis e produtos do apiário, com pedido direto no WhatsApp.</p><a href="https://www.colinadamata.com.br" target="_blank" rel="noopener">Abrir o site</a></div>
+      <article class="loja" style="--c:#E8C26A;--p:#5F6B4E">
+        <div class="placa"><span class="neon">Colina da Mata</span></div><div class="toldo"></div>
+        <div class="lv"><div class="vidro v-case"><div class="cel"><video muted loop playsinline preload="none" poster="casos/colina.jpg" data-src="casos/colina.mp4" aria-label="Vídeo da página do Apiário Colina da Mata"></video></div></div></div>
+        <div class="lt-txt"><h3>Apiário Colina da Mata</h3><p>Mel, própolis e produtos do apiário, com pedido direto no WhatsApp.</p><a href="https://www.colinadamata.com.br" target="_blank" rel="noopener">Abrir o site</a></div>
       </article>
-      <article class="case">
-        <div class="cel"><video muted loop playsinline preload="none" poster="casos/em.jpg" data-src="casos/em.mp4" aria-label="Vídeo da página da E.M. Montagem Industrial"></video></div>
-        <div><h3>E.M. Montagem Industrial</h3><p>Montagem de linhas pneumáticas e hidráulicas, com orçamento pelo WhatsApp.</p><a href="https://edenias-montagens.vercel.app/" target="_blank" rel="noopener">Abrir o site</a></div>
+      <article class="loja" style="--c:#4FA3FF;--p:#3E4E62">
+        <div class="placa"><span class="neon">E.M. Montagem</span></div><div class="toldo"></div>
+        <div class="lv"><div class="vidro v-case"><div class="cel"><video muted loop playsinline preload="none" poster="casos/em.jpg" data-src="casos/em.mp4" aria-label="Vídeo da página da E.M. Montagem Industrial"></video></div></div></div>
+        <div class="lt-txt"><h3>E.M. Montagem Industrial</h3><p>Montagem de linhas pneumáticas e hidráulicas, com orçamento pelo WhatsApp.</p><a href="https://edenias-montagens.vercel.app/" target="_blank" rel="noopener">Abrir o site</a></div>
       </article>
     </div>
   </div>
@@ -624,11 +663,24 @@ function links(){
   document.getElementById('cta-t').textContent=n?'Acender '+(n.length>16?'o meu':n):'Quero o meu aceso';
 }
 nomeIn.addEventListener('input',letreiro);links();
+if(root.classList.contains('og')){nomeIn.value='Seu negócio';letreiro()}
 
 /* rua do topo começa no seu letreiro, no celular */
 var rs=document.getElementById('rua-scroll'),s1=document.getElementById('sua1');
 function centra(){if(rs.scrollWidth>rs.clientWidth)rs.scrollLeft=s1.offsetLeft+s1.offsetWidth/2-rs.clientWidth/2}
 centra();window.addEventListener('load',centra);
+
+/* a rua acende ao abrir: um letreiro de cada vez, o seu fica por último esperando o nome */
+if(root.classList.contains('boot')){
+  var ft=[].slice.call(document.querySelectorAll('#rua-scroll .fac:not(.sua)')),pt=document.querySelectorAll('.hero .poste');
+  setTimeout(function(){pt.forEach(function(p){p.classList.add('on')})},250);
+  ft.forEach(function(f,i){setTimeout(function(){f.classList.add('on')},550+i*330)});
+  setTimeout(function(){if(!limpo())s1.classList.add('chama')},550+ft.length*330+250);
+}
+
+/* pontinhos do passeio no celular */
+var tw=document.querySelector('.trilho-wrap'),pts=document.querySelectorAll('#pontos i');
+tw.addEventListener('scroll',function(){var l=tw.querySelector('.loja');if(!l)return;var i=Math.round(tw.scrollLeft/(l.offsetWidth+14));pts.forEach(function(p,j){p.classList.toggle('on',j===i)})},{passive:true});
 
 /* passeio: a rua anda de lado enquanto você rola */
 var sec=document.getElementById('rua'),pb=document.getElementById('pinbox'),tr=document.getElementById('trilho'),pinOn=false,dist=0;
@@ -685,7 +737,7 @@ else new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isInter
 var conn=navigator.connection||{},lento=conn.saveData||/(^|-)2g$/.test(conn.effectiveType||'');
 if(!reduz&&!lento&&'IntersectionObserver' in window){
   var vo=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){if(!v.src)v.src=v.dataset.src;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.35});
-  document.querySelectorAll('.cel video').forEach(function(v){vo.observe(v)});
+  document.querySelectorAll('.cases video').forEach(function(v){vo.observe(v)});
 }
 
 /* barra fixa no celular */
