@@ -195,6 +195,9 @@ section{padding-block:clamp(4.5rem,3rem + 6vw,8.5rem)}
 .pin .trilho{padding-top:1.5rem;padding-bottom:1rem}
 .loja{--c:#FF6FA8;flex:none;width:min(520px,86vw);display:flex;flex-direction:column}
 .loja .placa{margin:0 18px;min-height:64px}
+.placa-link{text-decoration:none;cursor:pointer;transition:transform 160ms var(--ease),box-shadow 200ms ease}
+.placa-link:active{transform:scale(.98)}
+@media (hover:hover) and (pointer:fine){.placa-link:hover{box-shadow:inset 0 0 0 2px var(--c),0 0 calc(26px*var(--glow)) color-mix(in srgb,var(--c) 45%,transparent)}}
 .loja .neon{font-size:26px}
 .loja .toldo{margin-top:0;height:34px;border-radius:2px 2px 0 0}
 .lv{position:relative;background:linear-gradient(rgba(9,11,30,var(--esc)),rgba(9,11,30,var(--esc))),var(--p,#5E6E8E);padding:18px;border-radius:0 0 6px 6px}
@@ -430,13 +433,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
 <div class="pin-box" id="pinbox"><div class="trilho-wrap">
   <div class="passeio-in wrap">
     <h2 id="rua-t">Dá uma volta na rua</h2>
-    <p class="lead">Cada loja mostra uma coisa que a sua página pode fazer sozinha. Toque no nome pra entrar e ver a página de exemplo inteira.</p>
+    <p class="lead">Cada loja mostra uma coisa que a sua página pode fazer sozinha. Toque no letreiro pra entrar e ver a página de exemplo inteira.</p>
     <p class="dica-m"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-5-5 5 5-5 5"/></svg>Deslize pro lado pra andar pela rua</p>
   </div>
       <div class="trilho" id="trilho">
 
       <article class="loja" style="--c:#FF6FA8;--p:#B8707C">
-        <div class="placa"><span class="neon">Cookies da Lu</span></div><div class="toldo"></div>
+        <a class="placa placa-link" href="exemplos/doceria.html" aria-label="Entrar: Cookies da Lu"><span class="neon">Cookies da Lu</span></a><div class="toldo"></div>
         <div class="lv"><div class="vidro">
           <div class="mini" style="--cor:#5A2E1A"><div class="t">Sua sacola</div><div class="m-l"><span>2x Cookie de Nutella</span><b>R$ 18</b></div><div class="m-l"><span>1x Brownie</span><b>R$ 12</b></div><div class="m-tot"><span>Total</span><span>R$ 30,00</span></div><div class="m-btn">Pagar no Pix</div></div>
           <div class="zapb"><b>No seu WhatsApp</b>Pedido da Ana: 2x Cookie de Nutella, 1x Brownie. Total R$ 30,00. Pago no Pix, comprovante em anexo.<time>19:42</time></div>
@@ -445,7 +448,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
       </article>
 
       <article class="loja" style="--c:#C58BFF;--p:#8E6A9E">
-        <div class="placa"><span class="neon">Studio Bela</span></div><div class="toldo"></div>
+        <a class="placa placa-link" href="exemplos/salao.html" aria-label="Entrar: Studio Bela"><span class="neon">Studio Bela</span></a><div class="toldo"></div>
         <div class="lv"><div class="vidro">
           <div class="mini" style="--cor:#5B1A40"><div class="t">Corte e escova</div><div class="chips"><span>Ter 3</span><span class="on">Qua 4</span><span>Qui 5</span></div><div class="chips"><span>9h</span><span>10h30</span><span class="on">14h</span><span>16h30</span></div><div class="m-btn">Marcar horário</div></div>
           <div class="zapb"><b>No seu WhatsApp</b>Oi! Quero marcar corte e escova na quarta, às 14h. Meu nome é Ana.<time>10:15</time></div>
@@ -454,7 +457,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
       </article>
 
       <article class="loja" style="--c:#7FD3FF;--p:#4E6E8E">
-        <div class="placa"><span class="neon">Recanto</span></div><div class="toldo"></div>
+        <a class="placa placa-link" href="exemplos/loja.html" aria-label="Entrar: Recanto"><span class="neon">Recanto</span></a><div class="toldo"></div>
         <div class="lv"><div class="vidro">
           <div>
             <div class="promo"><i>-14%</i>Vestido midi<br><s>R$ 139,90</s> <b>R$ 119,90</b></div>
@@ -466,7 +469,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
       </article>
 
       <article class="loja" style="--c:#FFB65C;--p:#C98E4E">
-        <div class="placa"><span class="neon">Boa Vista</span></div><div class="toldo"></div>
+        <a class="placa placa-link" href="exemplos/oficina.html" aria-label="Entrar: Boa Vista"><span class="neon">Boa Vista</span></a><div class="toldo"></div>
         <div class="lv"><div class="vidro">
           <div class="mini" style="--cor:#1F2A24"><span class="st fe" id="of-st">Fechado agora</span><div class="campo"><small>Carro</small>Gol 2015</div><div class="campo"><small>O que está acontecendo</small>Barulho no freio</div><div class="m-btn">Pedir orçamento</div></div>
           <div class="zapb"><b>No seu WhatsApp</b>Orçamento: Gol 2015, barulho no freio. João, do Jardim Brasil.<time>08:03</time></div>
@@ -475,7 +478,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
       </article>
 
       <article class="loja" style="--c:#FFD54A;--p:#9C8A4E">
-        <div class="placa"><span class="neon">Mel do Sítio</span></div><div class="toldo"></div>
+        <a class="placa placa-link" href="exemplos/apiario.html" aria-label="Entrar: Mel do Sítio"><span class="neon">Mel do Sítio</span></a><div class="toldo"></div>
         <div class="lv"><div class="vidro">
           <div class="mapa" aria-hidden="true"><i style="left:0;right:0;top:46%;height:8px"></i><i style="top:0;bottom:0;left:30%;width:8px"></i><i style="top:0;bottom:0;left:72%;width:6px"></i><i style="left:0;right:0;top:78%;height:5px"></i><span class="pin-m"></span></div>
           <div class="mini" style="--cor:#5C3D00"><div class="t">Mel do Sítio</div><div class="m-btn">Abrir no Maps</div><div class="m-btn" style="background:#fff;color:#5C3D00;box-shadow:inset 0 0 0 1.5px #5C3D00">Ligar</div></div>
@@ -562,12 +565,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
     <p class="lead">Páginas de verdade, de gente da região, no ar agora.</p>
     <div class="cases">
       <article class="loja" style="--c:#E8C26A;--p:#5F6B4E">
-        <div class="placa"><span class="neon">Colina da Mata</span></div><div class="toldo"></div>
+        <a class="placa placa-link" href="https://www.colinadamata.com.br" target="_blank" rel="noopener" aria-label="Entrar: Colina da Mata"><span class="neon">Colina da Mata</span></a><div class="toldo"></div>
         <div class="lv"><div class="vidro v-case"><div class="cel"><video muted loop playsinline preload="none" poster="casos/colina.jpg" data-src="casos/colina.mp4" aria-label="Vídeo da página do Apiário Colina da Mata"></video></div></div></div>
         <div class="lt-txt"><h3>Apiário Colina da Mata</h3><p>Mel, própolis e produtos do apiário, com pedido direto no WhatsApp.</p><a href="https://www.colinadamata.com.br" target="_blank" rel="noopener">Abrir o site</a></div>
       </article>
       <article class="loja" style="--c:#4FA3FF;--p:#3E4E62">
-        <div class="placa"><span class="neon">E.M. Montagem</span></div><div class="toldo"></div>
+        <a class="placa placa-link" href="https://edenias-montagens.vercel.app/" target="_blank" rel="noopener" aria-label="Entrar: E.M. Montagem"><span class="neon">E.M. Montagem</span></a><div class="toldo"></div>
         <div class="lv"><div class="vidro v-case"><div class="cel"><video muted loop playsinline preload="none" poster="casos/em.jpg" data-src="casos/em.mp4" aria-label="Vídeo da página da E.M. Montagem Industrial"></video></div></div></div>
         <div class="lt-txt"><h3>E.M. Montagem Industrial</h3><p>Montagem de linhas pneumáticas e hidráulicas, com orçamento pelo WhatsApp.</p><a href="https://edenias-montagens.vercel.app/" target="_blank" rel="noopener">Abrir o site</a></div>
       </article>
