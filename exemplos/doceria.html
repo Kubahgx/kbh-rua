@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookies da Lu | Exemplo da Kbh Sites</title>
+<meta name="description" content="Página de exemplo de uma doceria, feita pela Kbh Sites.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#3B1E10">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500..700&family=Atkinson+Hyperlegible+Next:wght@400;600&display=swap">
+<style>
+:root{--choc:#3B1E10;--choc2:#5A2E1A;--car:#C9773E;--creme:#FCEBDC;--leite:#FFF8F1;--ink:#2B1A12;--soft:#7A6255;--ok:#1F7A4D;--gema:#FFC23D;--ease:cubic-bezier(.23,1,.32,1);color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--leite);color:var(--ink);font:400 1.0625rem/1.55 'Atkinson Hyperlegible Next',system-ui,sans-serif}
+h1,h2,h3{font-family:'Fredoka',system-ui,sans-serif;font-weight:700;line-height:1.05;margin:0}
+p{margin:0}a{color:inherit}img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--car);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1080px,100% - 32px);margin-inline:auto}
+.aviso{background:#1A1C22;color:#F4F5F2;font-size:.95rem}
+.aviso .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1rem;align-items:center;justify-content:space-between;padding-block:.6rem}
+.aviso a{color:#FFC23D;font-weight:600;text-underline-offset:3px}
+.hero{position:relative;color:#fff;background:var(--choc) center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,20,9,.92),rgba(43,20,9,.55) 60%,rgba(43,20,9,.2))}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(3rem,2rem + 6vw,7rem)}
+.hero h1{font-size:clamp(3rem,2rem + 6vw,6rem)}
+.hero p.s{margin-top:.8rem;font-size:1.2rem;max-width:30ch;opacity:.92}
+.pill{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.25rem;background:var(--gema);color:#3A2A00;font-weight:600;padding:.35rem .85rem;border-radius:99px}
+.pill::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ok)}
+.pill.fechado{background:#EDE3DA}.pill.fechado::before{background:#A33}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:.8rem 1.3rem;border-radius:14px;border:0;background:var(--car);color:#fff;font:600 1.0625rem/1.2 'Atkinson Hyperlegible Next',sans-serif;text-decoration:none;cursor:pointer;transition:transform 160ms var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:22px;height:22px}
+.acts{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}
+.btn.claro{background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+.promo{background:var(--gema);color:#3A2A00}
+.promo .wrap{display:flex;flex-wrap:wrap;gap:.25rem 1.5rem;align-items:center;justify-content:space-between;padding-block:1rem;font-weight:600;font-size:1.1rem}
+.promo b{font-family:'Fredoka',sans-serif;font-size:1.35rem}
+section{padding-block:clamp(3rem,2.5rem + 3vw,5rem)}
+h2{font-size:clamp(2rem,1.6rem + 2vw,2.8rem);color:var(--choc2)}
+.grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:2rem;align-items:start;margin-top:2rem}
+.itens{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.item{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 0 0 1px #F0DFD0;display:flex;flex-direction:column}
+.item img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--creme)}
+.item .tx{padding:1rem 1rem 1.1rem;display:flex;flex-direction:column;gap:.25rem;flex:1}
+.item h3{font-size:1.25rem;color:var(--ink)}
+.item p{color:var(--soft);font-size:.95rem}
+.item .lin{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.75rem}
+.item .pr{font-weight:600;font-size:1.1rem}
+.qt{display:flex;align-items:center;gap:.4rem}
+.qt button{width:40px;height:40px;border-radius:12px;border:0;background:var(--creme);color:var(--choc2);font:700 1.3rem/1 'Fredoka',sans-serif;cursor:pointer;transition:transform 140ms var(--ease)}
+.qt button:active{transform:scale(.94)}
+.qt output{min-width:1.5ch;text-align:center;font-weight:600}
+.pedido{position:sticky;top:16px;background:var(--choc2);color:var(--creme);border-radius:22px;padding:1.4rem}
+.pedido h3{font-size:1.5rem;color:#fff}
+.pedido ul{list-style:none;padding:0;margin:1rem 0;display:grid;gap:.35rem;font-size:1rem}
+.pedido li{display:flex;justify-content:space-between;gap:1rem}
+.pedido .vazio{opacity:.75}
+.pedido label{display:block;font-weight:600;margin-top:.5rem}
+.pedido select{width:100%;margin-top:.4rem;font:600 1rem 'Atkinson Hyperlegible Next',sans-serif;padding:.7rem;border-radius:12px;border:0;background:var(--creme);color:var(--choc2)}
+.tot{display:flex;justify-content:space-between;margin:1rem 0;padding-top:1rem;border-top:1px solid rgba(252,235,220,.25);font-size:1.15rem;font-weight:600}
+.pedido .btn{width:100%;background:var(--gema);color:#3A2A00}
+.err{color:#FFD7B5;font-size:.95rem;margin-top:.6rem;min-height:1.2em}
+.galeria{display:grid;grid-template-columns:2fr 1fr 1fr;gap:.75rem;margin-top:2rem}
+.galeria img{width:100%;height:100%;min-height:180px;object-fit:cover;border-radius:18px}
+.galeria img:first-child{grid-row:span 2}
+.info{background:var(--creme)}
+.info-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem}
+.box{background:#fff;border-radius:18px;padding:1.3rem}
+.box h3{font-size:1.25rem;color:var(--choc2)}
+.box p{color:var(--soft);margin-top:.4rem}
+.box .btn{margin-top:.9rem;min-height:46px;font-size:1rem;background:var(--choc2)}
+footer{background:var(--choc);color:var(--creme);padding-block:2rem 3rem;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+@media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.06)}}
+@media (max-width:860px){.grid{grid-template-columns:1fr}.pedido{position:relative;top:0}.info-g{grid-template-columns:1fr}}
+@media (max-width:560px){.itens{grid-template-columns:1fr}.galeria{grid-template-columns:1fr 1fr}.galeria img:first-child{grid-column:span 2;grid-row:auto}}
+@media (prefers-reduced-motion:reduce){.btn:active,.qt button:active{transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></symbol></svg>
+
+<div class="aviso"><div class="wrap"><span>Página de exemplo feita pela Kbh Sites. A doceria não existe.</span><a href="../">Voltar pra Kbh Sites</a></div></div>
+
+<header class="hero" style="background-image:url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=1600&q=70&auto=format&fit=crop')">
+  <div class="wrap">
+    <h1>Cookies da Lu</h1>
+    <p class="s">Cookies grandes, feitos no dia, com entrega em Amparo.</p>
+    <span class="pill" id="pill">Aberto agora</span>
+    <div class="acts"><a class="btn" href="#cardapio">Ver o cardápio</a><a class="btn claro" href="#onde">Onde fica</a></div>
+  </div>
+</header>
+
+<div class="promo"><div class="wrap"><span><b>Caixa com 6 por R$ 42</b> <span style="white-space:nowrap">no lugar de R$ 48</span></span><span id="cd">Vale até sábado</span></div></div>
+
+<main>
+<section id="cardapio" aria-labelledby="car-t">
+  <div class="wrap">
+    <h2 id="car-t">Cardápio</h2>
+    <div class="grid">
+      <div class="itens" id="itens"></div>
+      <aside class="pedido" aria-labelledby="ped-t">
+        <h3 id="ped-t">Seu pedido</h3>
+        <ul id="lista"><li class="vazio">Escolha os doces ao lado.</li></ul>
+        <label for="bairro">Bairro pra entrega</label>
+        <select id="bairro">
+          <option value="0">Vou buscar na loja</option>
+          <option value="5">Centro (R$ 5)</option>
+          <option value="7">Vila Nova (R$ 7)</option>
+          <option value="8">Jardim das Flores (R$ 8)</option>
+          <option value="12">Zona rural (R$ 12)</option>
+        </select>
+        <div class="tot"><span>Total</span><span id="total">R$ 0</span></div>
+        <button class="btn" type="button" id="enviar"><svg aria-hidden="true"><use href="#wa"/></svg>Mandar pedido no WhatsApp</button>
+        <p class="err" id="err" aria-live="polite"></p>
+      </aside>
+    </div>
+    <div class="galeria" aria-label="Fotos da doceria">
+      <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=900&q=70&auto=format&fit=crop" alt="Vitrine com doces e pães" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=500&q=70&auto=format&fit=crop" alt="Cupcakes com cobertura verde" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&q=70&auto=format&fit=crop" alt="Brownie com calda" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="info" id="onde" aria-labelledby="info-t">
+  <div class="wrap">
+    <h2 id="info-t">Onde e quando</h2>
+    <div class="info-g">
+      <div class="box"><h3>Horário</h3><p>Terça a sábado, das 9h às 19h.</p><p id="ab-txt"></p></div>
+      <div class="box"><h3>Entrega</h3><p>Entregamos em Amparo. A taxa aparece quando você escolhe o bairro no pedido.</p></div>
+      <div class="box"><h3>Como chegar</h3><p>Rua de exemplo, 120, Centro.</p><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Amparo%20SP" target="_blank" rel="noopener">Abrir no mapa</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Cookies da Lu. Página de exemplo.</span><a href="../">Feito pela Kbh Sites</a></div></footer>
+
+<script>
+(function(){
+var WA='5519996882382';
+function U(id,w){return 'https://images.unsplash.com/photo-'+id+'?w='+w+'&q=70&auto=format&fit=crop'}
+var C=[['Cookie de Nutella','Massa crocante e recheio cremoso de avelã',9,'1558961363-fa8fdf82db35'],['Brownie','Pedaço generoso, casquinha por cima',12,'1606313564200-e75d5e30476c'],['Cupcake de baunilha','Cobertura de chantilly colorido',10,'1486427944299-d1955d23e34d'],['Caixa com 6','Sabores à sua escolha. Promoção da semana.',42,'1517433670267-08bbd4be890f']];
+var q=C.map(function(){return 0}),box=document.getElementById('itens');
+C.forEach(function(c,i){
+  var el=document.createElement('article');el.className='item';
+  el.innerHTML='<img src="'+U(c[3],600)+'" alt="'+c[0]+'" loading="lazy"><div class="tx"><h3>'+c[0]+'</h3><p>'+c[1]+'</p><div class="lin"><span class="pr">R$ '+c[2]+'</span><div class="qt"><button type="button" aria-label="Tirar um '+c[0]+'" data-i="'+i+'" data-d="-1">−</button><output id="q'+i+'" aria-live="polite">0</output><button type="button" aria-label="Pôr mais um '+c[0]+'" data-i="'+i+'" data-d="1">+</button></div></div></div>';
+  box.appendChild(el);
+});
+var bairro=document.getElementById('bairro');
+function conta(){
+  var l=document.getElementById('lista'),s=0,h='';
+  C.forEach(function(c,i){if(q[i]){s+=q[i]*c[2];h+='<li><span>'+q[i]+'x '+c[0]+'</span><span>R$ '+q[i]*c[2]+'</span></li>'}});
+  var t=+bairro.value;if(s&&t){h+='<li><span>Entrega</span><span>R$ '+t+'</span></li>';s+=t}
+  l.innerHTML=h||'<li class="vazio">Escolha os doces ao lado.</li>';
+  document.getElementById('total').textContent='R$ '+s;
+  if(s)document.getElementById('err').textContent='';
+}
+box.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var i=+b.dataset.i;q[i]=Math.max(0,q[i]+(+b.dataset.d));document.getElementById('q'+i).textContent=q[i];conta()});
+bairro.addEventListener('change',conta);
+document.getElementById('enviar').addEventListener('click',function(){
+  if(!q.some(Boolean)){document.getElementById('err').textContent='Escolha pelo menos um doce antes de mandar.';return}
+  var linhas=C.map(function(c,i){return q[i]?q[i]+'x '+c[0]:''}).filter(Boolean).join(', ');
+  var txt='Oi! Testei a página de exemplo da doceria na Kbh Sites e montei este pedido: '+linhas+'. Quero uma página assim pro meu negócio.';
+  location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(txt);
+});
+function agora(){var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/Sao_Paulo',weekday:'short',hour:'numeric',hour12:false}).formatToParts(new Date()),o={};p.forEach(function(x){o[x.type]=x.value});return{w:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(o.weekday),h:+o.hour%24}}
+function status(){var a=agora(),ab=a.w>=2&&a.w<=6&&a.h>=9&&a.h<19,p=document.getElementById('pill');p.textContent=ab?'Aberto agora, até 19h':'Fechado agora';p.classList.toggle('fechado',!ab);document.getElementById('ab-txt').textContent=ab?'Agora estamos abertos.':'Agora estamos fechados.';var d=(6-a.w+7)%7;document.getElementById('cd').textContent=d===0?'Termina hoje':d===1?'Falta 1 dia':'Faltam '+d+' dias'}
+status();setInterval(status,60000);
+})();
+</script>
+</body>
+</html>
